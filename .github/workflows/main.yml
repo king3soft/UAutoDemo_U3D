@@ -16,7 +16,7 @@ jobs:
       matrix:
         projectPath:EndlessRunDemo
           - path/to/your/project
-        unityVersion: 2018.4.24f1
+        unityVersion:2018.4.24f1
           - 2018.4.24f1
         targetPlatform:Android 
           - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
