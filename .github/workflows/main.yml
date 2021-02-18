@@ -14,9 +14,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        projectPath:EndlessRunDemo
-        unityVersion:2018.4.24f1
-        targetPlatform:Android 
+        projectPath:
+            - EndlessRunDemo
+        unityVersion:
+            - 2018.4.24f1
+        targetPlatform:
+            - Android 
     steps:
       - uses: actions/checkout@v2
         with:
