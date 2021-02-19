@@ -37,7 +37,7 @@ jobs:
         with:
           projectPath: EndlessRunDemo
           unityVersion: 2019.2.11f1
-          targetPlatform: WebGL
+          targetPlatform: StandaloneWindows64
 
       # Output
       - uses: actions/upload-artifact@v1
