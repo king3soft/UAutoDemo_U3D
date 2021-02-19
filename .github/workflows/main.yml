@@ -37,7 +37,7 @@ jobs:
         with:
           projectPath: EndlessRunDemo
           unityVersion: 2019.2.11f1
-          targetPlatform: Android
+          targetPlatform: StandaloneWindows64
 
       # Output
       - uses: actions/upload-artifact@v1
@@ -198,7 +198,7 @@ jobs:
         unityVersion:
           - 2019.2.11f1
         targetPlatform:
-          - Android  # Build a Windows 64-bit standalone.
+          - StandaloneWindows64 # Build a Windows 64-bit standalone.
 
     steps:
       - uses: actions/checkout@v2
