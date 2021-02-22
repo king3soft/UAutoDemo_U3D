@@ -53,11 +53,13 @@ jobs:
       #          Build          #
       ###########################
       - uses: ./
+        id:myBuildStep
         with:
           projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
-      
+      - run: echo 'Project Version: ${{ steps.myBuildStep.outputs.buildVersion }}-${{ steps.myBuildStep.outputs.outputName }}-'
+
       ###########################
       #          Upload         #
       ###########################
