@@ -63,13 +63,16 @@ jobs:
       #          Upload         #
       ###########################
       - uses: actions/upload-artifact@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           name: Build
           path: build
           retention-days: 14
-          files: ./dist/*Build.zip
+          
+      - uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          files: ./build/*Build.zip
           prerelease: ${{ contains(github.ref, '-') }}
 
      
