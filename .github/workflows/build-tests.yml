@@ -1,7 +1,9 @@
 name: Builds
 
 on:
-  push: { branches: [master] }
+  push:
+    tags:
+      - v*
   pull_request:
     paths-ignore:
       - '.github/**'
