@@ -69,7 +69,7 @@ jobs:
           name: Build (${{ matrix.unityVersion }})
           path: build
           retention-days: 14
-          files: ./dist/*release.zip
+          files: ./dist/*Build.zip
           prerelease: ${{ contains(github.ref, '-') }}
 
      
