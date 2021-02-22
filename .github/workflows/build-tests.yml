@@ -53,12 +53,10 @@ jobs:
       #          Build          #
       ###########################
       - uses: ./
-        id:myBuildStep
         with:
           projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
-      - run: echo 'Project Version: ${{ steps.myBuildStep.outputs.buildVersion }}-${{ steps.myBuildStep.outputs.outputName }}-'
 
       ###########################
       #          Upload         #
@@ -73,7 +71,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: Android.apk
+          files: build/Android.apk
           prerelease: ${{ contains(github.ref, '-') }}
 
      
