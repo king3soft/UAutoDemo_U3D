@@ -57,22 +57,21 @@ jobs:
           projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
-          customParameters: -profile SomeProfile -someBoolean -someValue exampleValue
-
+      
       ###########################
       #          Upload         #
       ###########################
-      - uses: actions/upload-artifact@v2
-        with:
-          name: Build
-          path: build
-          retention-days: 14
+      #- uses: actions/upload-artifact@v2
+       # with:
+        #  name: Build
+         # path: build
+          #retention-days: 14
           
       - uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: ./build/*Build.zip
+          files: ${{ matrix.projectPath }}/${{ steps.myBuildStep.outputs.outputName }}
           prerelease: ${{ contains(github.ref, '-') }}
 
      
