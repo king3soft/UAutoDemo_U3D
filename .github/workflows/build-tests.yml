@@ -71,7 +71,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: ${{ matrix.projectPath }}/${{ steps.myBuildStep.outputs.outputName }}
+          files: ${{ steps.myBuildStep.outputs.outputName }}
           prerelease: ${{ contains(github.ref, '-') }}
 
      
