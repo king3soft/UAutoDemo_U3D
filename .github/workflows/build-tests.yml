@@ -58,6 +58,13 @@ jobs:
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
 
+      - uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          files: build/Android.apk
+          prerelease: ${{ contains(github.ref, '-') }}
+
       ###########################
       #          Upload         #
       ###########################
@@ -66,12 +73,3 @@ jobs:
           name: Build
           path: build
           retention-days: 14
-          
-      - uses: softprops/action-gh-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          files: build/Android.apk
-          prerelease: ${{ contains(github.ref, '-') }}
-
-     
