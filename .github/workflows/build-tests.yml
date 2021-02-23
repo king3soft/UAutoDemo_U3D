@@ -4,7 +4,6 @@ on:
   push:
     tags:
       - v*
-    branches: [ master ]
   pull_request:
     paths-ignore:
       - '.github/**'
@@ -59,6 +58,10 @@ jobs:
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
 
+      - name: OutPut
+        run: |        
+          ls 
+          ls build          
       ###########################
       #          Upload         #
       ###########################
