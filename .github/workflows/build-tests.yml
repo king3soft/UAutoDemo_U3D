@@ -61,7 +61,7 @@ jobs:
       - name: OutPut
         run: |        
           ls 
-          ls build          
+          ls build/Android/          
       ###########################
       #          Upload         #
       ###########################
@@ -75,7 +75,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: build/*.apk
+          files: build/Android/*.apk
           prerelease: ${{ contains(github.ref, '-') }}
 
      
