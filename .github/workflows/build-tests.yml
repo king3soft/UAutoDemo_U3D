@@ -58,18 +58,24 @@ jobs:
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
 
+      - name: OutPut
+        run: |        
+          ls 
+          ls build          
+      ###########################
+      #          Upload         #
+      ###########################
+      # - uses: actions/upload-artifact@v2
+      #   with:
+      #     name: Build
+      #     path: build
+      #     retention-days: 14
+          
       - uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: build/Android.apk
+          files: build/*.apk
           prerelease: ${{ contains(github.ref, '-') }}
 
-      ###########################
-      #          Upload         #
-      ###########################
-      - uses: actions/upload-artifact@v2
-        with:
-          name: Build
-          path: build
-          retention-days: 14
+     
