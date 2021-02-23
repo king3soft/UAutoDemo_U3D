@@ -1,11 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
-using TcpServer;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Profiling;
 using Debug = UnityEngine.Debug;
 namespace UAutoSDK
 {
@@ -19,7 +15,6 @@ namespace UAutoSDK
                 if (runer != null)
                 {
                     runer.Init();
-                    
                     runer.Run();
                 }
             }
@@ -28,5 +23,5 @@ namespace UAutoSDK
                 Debug.LogErrorFormat("[ERROR] UAutoSDk Reg MsgHandler Error. {0}", e.ToString());
             }
         }
-    }
+  }
 }
