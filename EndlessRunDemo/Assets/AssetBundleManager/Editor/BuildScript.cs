@@ -102,7 +102,7 @@ namespace AssetBundles
 			CopyAssetBundlesTo(path);
 			AssetDatabase.Refresh();
 			
-			BuildOptions option = EditorUserBuildSettings.development ? BuildOptions.Development : BuildOptions.None;
+			BuildOptions option = BuildOptions.Development;//EditorUserBuildSettings.development ? BuildOptions.Development : BuildOptions.None;
 			if (run) option |= BuildOptions.AutoRunPlayer;
 
 			BuildPipeline.BuildPlayer(levels, outputPath + targetName, EditorUserBuildSettings.activeBuildTarget, option);
