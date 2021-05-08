@@ -72,8 +72,9 @@ namespace AssetBundles
 			// Build and copy AssetBundles.
 			BuildAssetBundles();
 			WriteServerURL();
-	
-			BuildOptions option = EditorUserBuildSettings.development ? BuildOptions.Development : BuildOptions.None;
+
+			// 性能采集功能需要使用Development版本
+			BuildOptions option = BuildOptions.Development;//EditorUserBuildSettings.development ? BuildOptions.Development : BuildOptions.None;
 			BuildPipeline.BuildPlayer(levels, outputPath + targetName, EditorUserBuildSettings.activeBuildTarget, option);
 		}
 		
