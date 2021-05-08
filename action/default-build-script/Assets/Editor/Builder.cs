@@ -20,7 +20,8 @@ namespace UnityBuilderAction
       var scenes = EditorBuildSettings.scenes.Where(scene => scene.enabled).Select(s => s.path).ToArray();
       
       // Get all buildOptions from options
-      BuildOptions buildOptions = BuildOptions.None;
+      // BuildOptions buildOptions = BuildOptions.None;
+      BuildOptions buildOptions = BuildOptions.Development;
       foreach (string buildOptionString in Enum.GetNames(typeof(BuildOptions))) {
         if (options.ContainsKey(buildOptionString)) {
           BuildOptions buildOptionEnum = (BuildOptions) Enum.Parse(typeof(BuildOptions), buildOptionString);
