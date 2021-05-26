@@ -13,6 +13,7 @@ public class CharacterInputController : MonoBehaviour
 	static int s_JumpingSpeedHash = Animator.StringToHash("JumpSpeed");
 	static int s_SlidingHash = Animator.StringToHash("Sliding");
 
+
 	public TrackManager trackManager;
 	public Character character;
 	public CharacterCollider characterCollider;
@@ -71,12 +72,23 @@ public class CharacterInputController : MonoBehaviour
     protected const float k_TrackSpeedToJumpAnimSpeedRatio = 0.6f;
     protected const float k_TrackSpeedToSlideAnimSpeedRatio = 0.9f;
 
+    public static CharacterInputController Instance;
+
+    public int currentLane
+    {
+      get
+      {
+        return m_CurrentLane;
+      }
+    }
+
     protected void Awake ()
     {
         m_Premium = 0;
         m_CurrentLife = 0;
         m_Sliding = false;
         m_SlideStart = 0.0f;
+        Instance = this;
     }
 
 #if !UNITY_STANDALONE
@@ -111,17 +123,18 @@ public class CharacterInputController : MonoBehaviour
     }
 
 	// Called at the beginning of a run or rerun
-	public void Begin()
-	{
-        character.animator.SetBool(s_DeadHash, false);
+  public void Begin()
+  {
+    character.animator.SetBool(s_DeadHash, false);
 
-		characterCollider.Init ();
+    characterCollider.Init();
 
-		m_ActiveConsumables.Clear();
-	}
+    m_ActiveConsumables.Clear();
+  }
 
-	public void End()
-	{
+  public void End()
+  {
+    SimpleAI.Instance.enable = false;
         CleanConsumable();
     }
 
@@ -153,7 +166,7 @@ public class CharacterInputController : MonoBehaviour
             character.animator.SetBool(s_MovingHash, false);
         }
     }
-	
+
 	protected void Update ()
     {
 #if UNITY_EDITOR || UNITY_STANDALONE
@@ -211,7 +224,7 @@ public class CharacterInputController : MonoBehaviour
 							ChangeLane(1);
 						}
 					}
-						
+
 					m_IsSwiping = false;
 				}
             }
@@ -325,7 +338,7 @@ public class CharacterInputController : MonoBehaviour
 		    if (m_Jumping)
 		        StopJumping();
 
-            float correctSlideLength = slideLength * (1.0f + trackManager.speedRatio); 
+            float correctSlideLength = slideLength * (1.0f + trackManager.speedRatio);
 			m_SlideStart = trackManager.worldDistance;
             float animSpeed = k_TrackSpeedToJumpAnimSpeedRatio * (trackManager.speed / correctSlideLength);
 
@@ -388,7 +401,7 @@ public class CharacterInputController : MonoBehaviour
             }
         }
 
-        // If we didn't had one, activate that one 
+        // If we didn't had one, activate that one
         c.transform.SetParent(transform, false);
         c.gameObject.SetActive(false);
 

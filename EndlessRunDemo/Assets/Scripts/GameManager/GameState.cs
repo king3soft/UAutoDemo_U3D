@@ -222,7 +222,7 @@ public class GameState : AState
 
     void OnApplicationFocus(bool focusStatus)
     {
-        if (!focusStatus) Pause();
+        // if (!focusStatus) Pause();
     }
 
     public void Pause()
